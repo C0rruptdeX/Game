@@ -57,6 +57,12 @@ function Speer_box(x,y, t,r) {
 		translate(this.position.x, this.position.y);
 		pop();
 
+		push();
+		fill(108,108,0);
+		rect(this.position.x+this.off_set.x, this.position.y+this.off_set.y, 5, 5);
+		translate(this.position.x, this.position.y);
+		pop();
+
 	}
 }
 
@@ -70,6 +76,8 @@ function Speer(x,y, v) {
 
 	this.time_lived = 0;
 	this.TIME_TO_LIVE = 900;
+
+	this.breakTime = 10;
 
 	this.update = function() {
 		this.collide();
@@ -105,6 +113,20 @@ function Speer(x,y, v) {
 			}
 			i = 0;
 
+			while(i < game.level.umleiter.length && !stop && this.breakTime==0) {
+				if(collRE(20, 20, game.level.umleiter[i].position, 10, this.position)) {
+					this.velocity = game.level.umleiter[i].velocity;
+					this.position.set(game.level.umleiter[i].position.x+game.level.umleiter[i].off_set.x,game.level.umleiter[i].position.y+game.level.umleiter[i].off_set.y);
+					this.breakTime = 5;
+					stop = true;
+				}
+				i++;
+			}
+			i = 0;
+			if(!stop && this.breakTime>0) {
+				this.breakTime--;
+			}
+
     }
 
 	}
@@ -129,7 +151,65 @@ function Speer(x,y, v) {
 
 // -----------------  umleiter ???????  -----------------
 
+function Umleiter(x,y, r) {
 
+	this.position = createVector(x,y);
+	this.rotation = r;
+	this.velocity = createVector(0,0);
+
+	this.off_set = createVector(0,0);
+
+  this.getVelocity = function() {
+    if(this.rotation == 0) {
+			var velocity = createVector(3,0);
+			this.off_set = createVector(16,5);
+			this.velocity = velocity;
+
+    }else if(this.rotation == 1) {
+			var velocity = createVector(0,-3);
+			this.off_set = createVector(5,2);
+			this.velocity = velocity;
+
+		}else if(this.rotation == 2) {
+			var velocity = createVector(-3,0);
+			this.off_set = createVector(2,5);
+			this.velocity = velocity;
+
+		}else if(this.rotation == 3) {
+			var velocity = createVector(0,3);
+			this.off_set = createVector(5,16);
+			this.velocity = velocity;
+		}
+  }
+
+	this.update = function() {
+		if(game.level.umleiter.indexOf(this) != game.player.yourUmIndex) {
+			this.collide();
+		}
+	}
+
+	this.collide = function() {
+		if(collRE(20, 20, this.position, game.player.size, game.player.position)){
+			resetP();
+		}
+	}
+
+	this.render = function() {
+
+		push();
+		fill(128,128,0);
+		rect(this.position.x, this.position.y, 20, 20);
+		translate(this.position.x, this.position.y);
+		pop();
+
+		push();
+		fill(108,108,0);
+		rect(this.position.x+this.off_set.x, this.position.y+this.off_set.y, 5, 5);
+		translate(this.position.x, this.position.y);
+		pop();
+
+	}
+}
 
 // #################   Kiste   ##################
 

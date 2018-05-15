@@ -50,9 +50,11 @@ function resetP(direction) {
 		game.player.position.add(newVelocity2);
 		if(game.player.hasBox) {
 			game.level.boxes[game.player.yourBoxIndex].position.add(newVelocity2);
+		} else if(game.player.hasUm) {
+			game.level.umleiter[game.player.yourUmIndex].position.add(newVelocity2);
 		}
 	}
-	
+
 }
 
 function resetG(direction) {

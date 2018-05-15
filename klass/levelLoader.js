@@ -5,6 +5,8 @@ function LevelLoader(x,y) {
 	this.loadetLevel = 0;
 	this.help = 0;
 
+	this.atStart = false;
+
 	//    x l/r , y u/d , w , h
 
 	this.walls_info_ =  [4500, 5000, 300, 20,  4500, 5000, 20, 300,   4780, 4850, 20, 150,   4900, 4850, 20, 150,
@@ -30,6 +32,7 @@ function LevelLoader(x,y) {
 	this.button_info = [4655, 5395, 3, 1,   4755, 5395, 2, 3];
 
 	this.speer_boxes_info = [5100, 4900, 300, 3,    5045, 4900, 300, 3];
+	this.speer_umleit_info = [5100, 5000, 3,    5045, 5050, 3];
 	this.boxes_info = [5150, 4900,  5150, 4800, ];
 
 	this.telebs_info = []; //[5000, 4900,  4850, 4700]
@@ -47,6 +50,7 @@ function LevelLoader(x,y) {
 	this.level = [];
 
 	this.speers = [];
+	this.umleiter = [];
 	this.boxes = [];
 
 	this.teleps = [];
@@ -92,6 +96,13 @@ function LevelLoader(x,y) {
 	for( i = 0; i < this.speer_boxes_info.length/4; i++)  {
 		this.level.push(new Speer_box(this.speer_boxes_info[j],this.speer_boxes_info[j+1],this.speer_boxes_info[j+2],this.speer_boxes_info[j+3]));
 		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < this.speer_umleit_info.length/3; i++)  {
+		this.umleiter.push(new Umleiter(this.speer_umleit_info[j],this.speer_umleit_info[j+1],this.speer_umleit_info[j+2]));
+		this.umleiter[i].getVelocity();
+		j += 3;
 	}
 	j = 0;
 
@@ -148,6 +159,10 @@ function LevelLoader(x,y) {
 			this.telebs[i].update();
 		}
 
+		for(i = 0; i < this.umleiter.length; i++) {
+			this.umleiter[i].update();
+		}
+
 		for(i = 0; i < this.boxes.length; i++) {
 			this.boxes[i].update();
 		}
@@ -170,6 +185,10 @@ function LevelLoader(x,y) {
 
 		for(i = 0; i < this.telebs.length; i++) {
 			this.telebs[i].render();
+		}
+
+		for(i = 0; i < this.umleiter.length; i++) {
+			this.umleiter[i].render();
 		}
 
 		for(i = 0; i < this.boxes.length; i++) {

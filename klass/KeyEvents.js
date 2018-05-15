@@ -11,24 +11,47 @@ function keyPressed(){
 	}
 
 	if(keyCode == 69){
-		if(!game.player.hasBox) {
+		var found = false;
+
+		if(!game.player.hasBox && !game.player.hasUm) {
 			var i = 0;
 			var stop = false;
 
 			while(!stop && i < game.level.boxes.length) {
-				var distance = sqrt(pow(abs(game.level.boxes[i].width/2+game.level.boxes[i].position.x-game.player.position.x),2)+pow(game.level. boxes[i].width/2+(game.level.boxes[i].position.y-game.player.position.y),2));
+				var distance = sqrt(pow(abs(game.level.boxes[i].width/2+game.level.boxes[i].position.x-game.player.position.x),2)+pow(game.level.boxes[i].width/2+(game.level.boxes[i].position.y-game.player.position.y),2));
 				if(distance < 45 && game.ghost.yourBoxIndex != i) {
 					game.player.hasBox = true;
-					//game.player.position.set(game.level.boxes[i].position.x + 20 , game.level.boxes[i].position.y + 60);
 					game.player.yourBoxIndex = i;
 				}
 				i++;
 			}
+			i = 0;
 
-		}else if(game.player.hasBox) {
+			while(!stop && i < game.level.umleiter.length) {
+				var distance = sqrt(pow(abs(20/2+game.level.umleiter[i].position.x-game.player.position.x),2)+pow(20/2+(game.level.umleiter[i].position.y-game.player.position.y),2));
+				if(distance < 45) {
+					game.player.hasUm = true;
+					game.player.yourUmIndex = i;
+				}
+				i++;
+			}
+
+		}else if(game.player.hasBox || game.player.hasUm) {
 			game.player.hasBox = false;
 			game.player.yourBoxIndex = null;
+
+			game.player.hasUm = false;
+			game.player.yourUmIndex = null;
+
 		}
+	}
+
+	if(keyCode == 82 && game.player.hasUm) {
+		game.level.umleiter[game.player.yourUmIndex].rotation++;
+		if(game.level.umleiter[game.player.yourUmIndex].rotation == 4) {
+			game.level.umleiter[game.player.yourUmIndex].rotation = 0;
+		}
+		game.level.umleiter[game.player.yourUmIndex].getVelocity();
 	}
 
 	if(keyCode == 70){
