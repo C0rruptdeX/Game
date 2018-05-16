@@ -54,13 +54,11 @@ function Speer_box(x,y, t,r) {
 		push();
 		fill(128,128,0);
 		rect(this.position.x, this.position.y, 20, 20);
-		translate(this.position.x, this.position.y);
 		pop();
 
 		push();
 		fill(108,108,0);
 		rect(this.position.x+this.off_set.x, this.position.y+this.off_set.y, 5, 5);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}
@@ -74,7 +72,7 @@ function Speer(x,y, v) {
   this.velocity = v;
 
 	this.time_lived = 0;
-	this.TIME_TO_LIVE = 900;
+	this.TIME_TO_LIVE = 1200;
 
 	this.breakTime = 10;
 
@@ -152,7 +150,6 @@ function Speer(x,y, v) {
 		push();
 		fill(102, 102, 153);
 		rect(this.position.x, this.position.y, 10, 10);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}
@@ -294,9 +291,7 @@ function Activator(x,y, use,what) {
 
 		push();
 		fill(155,151,151);
-
 		rect(this.position.x, this.position.y, this.width, this.height);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}
