@@ -82,9 +82,7 @@ function Key_End(x, y) {
 
 		push();
 		fill(238,173,14);
-
 		rect(this.position.x, this.position.y, this.width, this.height);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}
@@ -115,7 +113,6 @@ function Key_Steel(x, y) {
 		push();
 		fill(150,150,150);
 		rect(this.position.x, this.position.y, this.width, this.height);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}
@@ -157,7 +154,6 @@ function Door_End(x,y, w,h) {
 		push();
 		fill(139,69,19);
 		rect(this.position.x, this.position.y, this.width, this.height);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}
@@ -206,13 +202,11 @@ function Door_Steel(x,y, w,h, use,what) {
 			push();
 			fill(155,151,151);
 			rect(this.position.x, this.position.y, this.width, this.height);
-			translate(this.position.x, this.position.y);
 			pop();
 		}else{
 			push();
 			fill(105,101,101);
 			rect(this.position.x, this.position.y, this.width, this.height);
-			translate(this.position.x, this.position.y);
 			pop();
 		}
 
@@ -338,7 +332,6 @@ function Button(x,y, use,what) {
 		push();
 		fill(155,151,151);
 		rect(this.position.x, this.position.y, this.width, this.height);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}

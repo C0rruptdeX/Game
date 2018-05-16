@@ -209,13 +209,11 @@ function Umleiter(x,y, r) {
 		push();
 		fill(108,108,0);
 		rect(this.position.x, this.position.y, 20, 20);
-		translate(this.position.x, this.position.y);
 		pop();
 
 		push();
 		fill(128,128,0);
 		rect(this.position.x+this.off_set.x, this.position.y+this.off_set.y, 5, 5);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}
@@ -329,7 +327,6 @@ function Box(x,y) {
 		push();
 		fill(139,69,19);
 		rect(this.position.x, this.position.y, this.width, this.height);
-		translate(this.position.x, this.position.y);
 		pop();
 
 	}
@@ -374,13 +371,11 @@ function TeleporterP(x,y,  lx,ly) {
 		stroke(150);
 		fill(178, 102, 255);
 		ellipse(this.position.x, this.position.y, this.width);
-		translate(this.position.x, this.position.y);
 		pop();
 
 		push();
 		fill(51, 0, 102);
 		ellipse(this.landOn.x, this.landOn.y, this.width-5);
-		translate(this.position.x, this.position.y);
 		pop();
 	}
 }
@@ -429,13 +424,11 @@ function TeleporterB(x,y,  lx,ly) {
 		stroke(151,151,151);
 		fill(107,142,35);
 		ellipse(this.position.x, this.position.y, this.width);
-		translate(this.position.x, this.position.y);
 		pop();
 
 		push();
 		fill(77,112,5);
 		ellipse(this.landOn.x, this.landOn.y, this.width-5);
-		translate(this.position.x, this.position.y);
 		pop();
 	}
 }
@@ -499,13 +492,11 @@ function DropStone(x,y) {
 			push();
 			fill(181,181,181);
 			ellipse(this.position.x, this.position.y, this.width);
-			translate(this.position.x, this.position.y);
 			pop();
 		}else {
 			push();
 			fill(64,64,64);
 			ellipse(this.position.x, this.position.y, this.width);
-			translate(this.position.x, this.position.y);
 			pop();
 		}
 

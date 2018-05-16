@@ -36,7 +36,7 @@ function LevelLoader(x,y) {
 	this.activator_info = [5200, 5000, 2, 5];
 
 	this.speer_boxes_info = [5100, 4900, 300, 3,    5045, 4900, 300, 3];
-	this.speer_umleit_info = [5100, 5000, 3,    5045, 5050, 3];
+	this.speer_umleit_info = [5100, 5000, 3,    5045, 5050, 3,   5305, 5050, 3];
 	this.boxes_info = [5150, 4900,  5150, 4800, ];
 
 	this.telebs_info = []; //[5000, 4900,  4850, 4700]
