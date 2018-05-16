@@ -11,7 +11,6 @@ function keyPressed(){
 	}
 
 	if(keyCode == 69){
-		var found = false;
 
 		if(!game.player.hasBox && !game.player.hasUm) {
 			var i = 0;

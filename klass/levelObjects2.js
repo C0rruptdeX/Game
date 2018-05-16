@@ -71,7 +71,6 @@ function Speer_box(x,y, t,r) {
 function Speer(x,y, v) {
 
 	this.position = createVector(x,y);
-	this.velocity = createVector(0,0);
   this.velocity = v;
 
 	this.time_lived = 0;
@@ -118,6 +117,16 @@ function Speer(x,y, v) {
 					this.velocity = game.level.umleiter[i].velocity;
 					this.position.set(game.level.umleiter[i].position.x+game.level.umleiter[i].off_set.x,game.level.umleiter[i].position.y+game.level.umleiter[i].off_set.y);
 					this.breakTime = 5;
+					stop = true;
+				}
+				i++;
+			}
+			i = 0;
+
+			while(i < game.level.activator.length && !stop) {
+				if(collRE(20, 20, game.level.activator[i].position, 10, this.position)) {
+					game.level.activator[i].gotHit_thing();
+					game.level.speers.splice(game.level.speers.indexOf(this),1);
 					stop = true;
 				}
 				i++;
@@ -183,8 +192,9 @@ function Umleiter(x,y, r) {
   }
 
 	this.update = function() {
-		if(game.level.umleiter.indexOf(this) != game.player.yourUmIndex) {
+		if(!game.player.hasUm) {
 			this.collide();
+		}else if(game.level.umleiter.indexOf(this) != game.player.yourUmIndex) {
 		}
 	}
 
@@ -197,14 +207,97 @@ function Umleiter(x,y, r) {
 	this.render = function() {
 
 		push();
-		fill(128,128,0);
+		fill(108,108,0);
 		rect(this.position.x, this.position.y, 20, 20);
 		translate(this.position.x, this.position.y);
 		pop();
 
 		push();
-		fill(108,108,0);
+		fill(128,128,0);
 		rect(this.position.x+this.off_set.x, this.position.y+this.off_set.y, 5, 5);
+		translate(this.position.x, this.position.y);
+		pop();
+
+	}
+}
+
+// --------------- activator ---------------
+
+function Activator(x,y, use,what) {
+
+	this.position = createVector(x,y);
+	this.width = 20+1;
+	this.height = 20+1;
+
+	this.use = use;
+	this.what_number = what;
+
+	this.isOn = false;
+
+	this.update = function() {
+		this.collide();
+	}
+
+	this.collide = function() {
+
+		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position)){
+			resetP();
+		}
+
+	}
+
+	this.gotHit_thing = function() {
+		if(!this.isOn && this.use == 1) {
+			var it = 0;
+			it = this.getIT();
+
+			if(it == -1) {
+				console.log("lol fehler");
+			}else {
+				game.level.level[it].isOpen = true;
+			}
+
+		}else if(this.use == 2){
+			var it = 0;
+			it = this.getIT();
+
+			if(!this.isOn){
+				if(it == -1) {
+					console.log("lol fehler");
+				}else {
+					game.level.level[it].isOpen = true;
+					this.isOn = true;
+				}
+
+			}else if(this.isOn) {
+				game.level.level[it].isOpen = false;
+				this.isOn = false;
+			}
+		}
+	}
+
+	this.getIT = function() {
+		var stop_serch = false;
+		var i = 0;
+
+		while(!stop_serch && i < game.level.level.length) {
+
+			if(game.level.level[i].what_number == this.what_number) {
+				stop_serch = true;
+				return i;
+			}
+			i++;
+		}
+		return -1;
+
+	}
+
+	this.render = function() {
+
+		push();
+		fill(205,201,201);
+
+		rect(this.position.x, this.position.y, this.width, this.height);
 		translate(this.position.x, this.position.y);
 		pop();
 
@@ -296,7 +389,6 @@ function TeleporterP(x,y,  lx,ly) {
 function TeleporterB(x,y,  lx,ly) {
 
 	this.position = createVector(x,y);
-	this.landOn = createVector(lx,ly);
 	this.landOnBox = createVector(lx-20,ly-20);
 	this.width = 30+1;
 	this.coolDown = 0;

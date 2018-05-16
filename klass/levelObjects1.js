@@ -7,7 +7,6 @@ function Wall(x,y, w,h) {
 	this.position = createVector(x,y);
 	this.width = w+1;
 	this.height = h+1;
-	this.velocity2 = createVector(0,0);
 
 	this.update = function() {
 		this.collide();
@@ -16,30 +15,20 @@ function Wall(x,y, w,h) {
 	this.collide = function() {
 
 		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position)){
-			this.move_wall();
+			resetP();
 		}
 		if(!game.ghost.visible){
 		}else if(collRE(this.width, this.height, this.position, game.ghost.size, game.ghost.position)){
-			this.move_wall_g();
+			resetG();
 		}
 
-	}
-
-	this.move_wall = function(direction)  {
-		resetP();
-	}
-
-	this.move_wall_g = function(direction)  {
-		resetG();
 	}
 
 	this.render = function() {
 
 		push();
 		fill(69,69,69);
-
 		rect(this.position.x, this.position.y, this.width, this.height);
-		// translate(this.position.x, this.position.y);
 		pop();
 
 	}
@@ -66,8 +55,6 @@ function Key_End(x, y) {
 
 			game.player.key_end +=1;
 			game.level.level.splice(game.level.level.indexOf(this),1);
-
-			console.log(game.player.key_end);
 		}
 
 	}
@@ -92,7 +79,6 @@ function Key_Steel(x, y) {
 	this.position = createVector(x, y );
 	this.width = 10;
 	this.height = 15;
-
 
 	this.update = function() {
 		this.collide();
@@ -127,7 +113,6 @@ function Door_End(x,y, w,h) {
 	this.position = createVector(x,y);
 	this.width = w+1;
 	this.height = h+1;
-	this.velocity2 = createVector(0,0);
 
 	this.update = function() {
 		this.collide();
@@ -137,7 +122,7 @@ function Door_End(x,y, w,h) {
 
 		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position)){
 
-			this.block();
+			resetP();
 
 			if(game.player.key_end > 0) {
 				alert("Neues Level Laden ");
@@ -146,11 +131,6 @@ function Door_End(x,y, w,h) {
 				LevelUpDate();
 			}
 		}
-
-	}
-
-	this.block = function(direction)  {
-		resetP();
 	}
 
 	this.render = function() {
@@ -171,7 +151,6 @@ function Door_Steel(x,y, w,h, use,what) {
 	this.position = createVector(x,y);
 	this.width = w+1;
 	this.height = h+1;
-	this.velocity2 = createVector(0,0);
 
 	this.use = use;
 	this.what_number = what;
@@ -187,23 +166,19 @@ function Door_Steel(x,y, w,h, use,what) {
 		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position) && !this.Open){
 
 			if(!this.isOpen) {
-				this.block();
+				resetP();
 			}
 
 			if(this.use == 1 && game.player.key_steel > 0) {
 				game.player.key_steel -= 1;
 
 				this.isOpen = true;
-			}else{
-				// text   ( verrosstet // ein anderrer weg um zu öffnen)
+			}else {
+
 			}
 
 		}
 
-	}
-
-	this.block = function(direction)  {
-		resetP();
 	}
 
 	this.render = function() {
@@ -226,21 +201,20 @@ function Door_Steel(x,y, w,h, use,what) {
 	}
 }
 
-/*    ###########################   Akitvatoren  - lorenz fix it if you see it XD  #######################*/
+/*    ###########################   Button  #######################*/
 
 function Button(x,y, use,what) {
 
 	this.position = createVector(x,y);
 	this.width = 30+1;
 	this.height = 30+1;
-	this.velocity2 = createVector(0,0);
 
 	this.use = use;
 	this.what_number = what;
 
 	this.isPressed = false;
 	this.isOn = false;
-	this.door_store = -1;
+
 
 	this.update = function() {
 		this.collide();
@@ -265,9 +239,9 @@ function Button(x,y, use,what) {
 	this.getIfBoxOnIt = function() {
 		var stop = false;
 		var i = 0;
+		var betterPos = createVector(this.position.x+15, this.position.y+15);
 
-		while(i < game.level.boxes.length && !stop) { // rr collision machen JJJJJJJJJJJJJJJJJAAAAAAAAAAAAAA
-			var betterPos = createVector(this.position.x+15, this.position.y+15)
+		while(i < game.level.boxes.length && !stop) {
 			if(collRE(game.level.boxes[i].width, game.level.boxes[i].height, game.level.boxes[i].position, 30, betterPos)) {
 				return true;
 				stop = true;
@@ -344,7 +318,6 @@ function Button(x,y, use,what) {
 
 		push();
 		fill(205,201,201);
-
 		rect(this.position.x, this.position.y, this.width, this.height);
 		translate(this.position.x, this.position.y);
 		pop();

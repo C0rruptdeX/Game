@@ -27,9 +27,11 @@ function LevelLoader(x,y) {
 	this.keys_end_info = [4850, 4730,  4800, 4760,  4850, 4730,  4800, 4760];
 	this.door_end_info = [4535, 5285, 70, 30];
 
-	this.doors_steel_info = [4605, 5295, 70, 30, 2, 1,   4705, 5295, 70, 30, 2, 3];
+	this.doors_steel_info = [4605, 5295, 70, 30, 2, 1,   4705, 5295, 70, 30, 2, 3,    4805, 5295, 70, 30, 2, 5];
 	this.keys_steel_info = [4655, 5205, 4655, 5255, ];
 	this.button_info = [4655, 5395, 3, 1,   4755, 5395, 2, 3];
+
+	this.activator_info = [5200, 5000, 2, 5];
 
 	this.speer_boxes_info = [5100, 4900, 300, 3,    5045, 4900, 300, 3];
 	this.speer_umleit_info = [5100, 5000, 3,    5045, 5050, 3];
@@ -56,6 +58,8 @@ function LevelLoader(x,y) {
 	this.teleps = [];
 	this.telebs = [];
 
+	this.activator = [];
+
 	for( i = 0; i < this.door_end_info.length/4; i++)  {
 		this.level.push(new Door_End(this.door_end_info[j],this.door_end_info[j+1],this.door_end_info[j+2],this.door_end_info[j+3]));
 		j += 4;
@@ -77,6 +81,12 @@ function LevelLoader(x,y) {
 
 	for(i=0; i < this.button_info.length/4; i++) {
 		this.level.push(new Button(this.button_info[j], this.button_info[j+1], this.button_info[j+2], this.button_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for(i=0; i < this.activator_info.length/4; i++) {
+		this.activator.push(new Activator(this.activator_info[j], this.activator_info[j+1], this.activator_info[j+2], this.activator_info[j+3]));
 		j += 4;
 	}
 	j = 0;
@@ -167,6 +177,10 @@ function LevelLoader(x,y) {
 			this.boxes[i].update();
 		}
 
+		for(i = 0; i < this.activator.length; i++) {
+			this.activator[i].update();
+		}
+
 	}
 
 	this.render = function() {
@@ -193,6 +207,10 @@ function LevelLoader(x,y) {
 
 		for(i = 0; i < this.boxes.length; i++) {
 			this.boxes[i].render();
+		}
+
+		for(i = 0; i < this.activator.length; i++) {
+			this.activator[i].render();
 		}
 
 
