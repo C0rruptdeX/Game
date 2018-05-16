@@ -76,7 +76,4 @@ function keyPressed(){
 			}
 		}
 	}
-
-
-	return false;
 }
