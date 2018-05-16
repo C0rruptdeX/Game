@@ -295,7 +295,7 @@ function Activator(x,y, use,what) {
 	this.render = function() {
 
 		push();
-		fill(205,201,201);
+		fill(155,151,151);
 
 		rect(this.position.x, this.position.y, this.width, this.height);
 		translate(this.position.x, this.position.y);
@@ -371,7 +371,7 @@ function TeleporterP(x,y,  lx,ly) {
 	this.render = function() {
 		push();
 		strokeWeight(4);
-		stroke(205);
+		stroke(150);
 		fill(178, 102, 255);
 		ellipse(this.position.x, this.position.y, this.width);
 		translate(this.position.x, this.position.y);
@@ -426,7 +426,7 @@ function TeleporterB(x,y,  lx,ly) {
 	this.render = function() {
 		push();
 		strokeWeight(4);
-		stroke(205,201,201);
+		stroke(151,151,151);
 		fill(107,142,35);
 		ellipse(this.position.x, this.position.y, this.width);
 		translate(this.position.x, this.position.y);
@@ -497,13 +497,13 @@ function DropStone(x,y) {
 
 		if(!this.renderDown) {
 			push();
-			fill(64,64,64);
+			fill(181,181,181);
 			ellipse(this.position.x, this.position.y, this.width);
 			translate(this.position.x, this.position.y);
 			pop();
 		}else {
 			push();
-			fill(192,192,192);
+			fill(64,64,64);
 			ellipse(this.position.x, this.position.y, this.width);
 			translate(this.position.x, this.position.y);
 			pop();

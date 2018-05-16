@@ -24,6 +24,8 @@ function LevelLoader(x,y) {
 	this.walls_info =  [4500, 5000, 300, 20,  4500, 5000, 20, 300,   4780, 4850, 20, 150,   4900, 4850, 20, 150,
 						];
 
+	this.floor_info = [4750, 4900, 500, 500];
+
 	this.keys_end_info = [4850, 4730,  4800, 4760,  4850, 4730,  4800, 4760];
 	this.door_end_info = [4535, 5285, 70, 30];
 
@@ -44,10 +46,7 @@ function LevelLoader(x,y) {
 
 
 	this.walls = [];
-	this.keys_end = [];
-	this.door_end = [];
-	this.doors_steel = [];
-	this.keys_steel = [];
+	this.floors = [];
 
 	this.level = [];
 
@@ -62,6 +61,12 @@ function LevelLoader(x,y) {
 
 	for( i = 0; i < this.door_end_info.length/4; i++)  {
 		this.level.push(new Door_End(this.door_end_info[j],this.door_end_info[j+1],this.door_end_info[j+2],this.door_end_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < this.floor_info.length/4; i++)  {
+		this.floors.push(new Floor(this.floor_info[j],this.floor_info[j+1],this.floor_info[j+2],this.floor_info[j+3]));
 		j += 4;
 	}
 	j = 0;
@@ -184,6 +189,10 @@ function LevelLoader(x,y) {
 	}
 
 	this.render = function() {
+
+		for(i=0; i<this.floors.length; i++){
+			this.floors[i].render();
+		}
 
 		for(i=0; i<this.level.length; i++){
 			this.level[i].render();
