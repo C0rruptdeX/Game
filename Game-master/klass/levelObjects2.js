@@ -38,6 +38,13 @@ function Speer_box(x,y, t,r) {
 
 	this.update = function() {
     this.spawn();
+		this.collide();
+	}
+
+	this.collide = function() {
+		if(collRE(20, 20, this.position, game.player.size, game.player.position)){
+			resetP();
+		}
 	}
 
   this.spawn = function () {
@@ -290,8 +297,14 @@ function Activator(x,y, use,what) {
 	this.render = function() {
 
 		push();
+		strokeWeight(1);
+		stroke(100);
 		fill(155,151,151);
 		rect(this.position.x, this.position.y, this.width, this.height);
+		pop();
+		push();
+		fill(155,40,9);
+		ellipse(this.position.x+this.width/2, this.position.y+this.width/2, this.width/1.5);
 		pop();
 
 	}

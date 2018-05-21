@@ -9,7 +9,7 @@ function LevelLoader(x,y) {
 
 	//    x l/r , y u/d , w , h
 
-	this.walls_info_ =  [4500, 5000, 300, 20,  4500, 5000, 20, 300,   4780, 4850, 20, 150,   4900, 4850, 20, 150,
+	this.walls_info =  [4500, 5000, 300, 20,  4500, 5000, 20, 300,   4780, 4850, 20, 150,   4900, 4850, 20, 150,
 						4780, 4700, 20, 150,  4900, 4700, 20, 150,   4800, 4700, 120, 20,   4900, 5000, 20, 150,
 						4900, 4900, 150, 20,  5100, 5000, 20, 150,   5100, 4900, 20, 150,   4950, 4900, 150, 20,
 						4850, 4900, 150, 20,  4900, 5100, 130, 20,   5100, 5130, 20, 130,   5000, 5180, 120, 20,
@@ -17,9 +17,27 @@ function LevelLoader(x,y) {
 						4780, 5350, 200, 20,  4780, 5100, 20, 250,   4620, 5100, 180, 20,   4620, 5100, 20, 200,
 						4500, 5290, 140, 20,];
 
-	this.keys_end_info_ = [4850, 4730];
-	this.door_end_info_ = [4535, 5285, 70, 30];
+	this.keys_end_info = [4850, 4730];
+	this.door_end_info = [4535, 5285, 70, 30];
 
+	this.floor_info = [4800, 4901, 310, 450,   4800, 4701, 100, 200,   4501, 5000, 120, 300,      4501, 5000, 420, 100];
+
+	this.doors_steel_info = [];
+	this.keys_steel_info = [];
+	this.button_info = [];
+
+	this.activator_info = [];
+
+	this.speer_boxes_info = [];
+	this.speer_umleit_info = [];
+	this.boxes_info = [];
+
+	this.telebs_info = [];
+	this.teleps_info = [];
+
+	this.stoneT_info = [];
+
+  /*  ############ test level ##########
 
 	this.walls_info =  [4500, 5000, 300, 20,  4500, 5000, 20, 300,   4780, 4850, 20, 150,   4900, 4850, 20, 150,
 						];
@@ -43,7 +61,7 @@ function LevelLoader(x,y) {
 	this.teleps_info = [5000, 4900,  4850, 4700];
 
 	this.stoneT_info = [4800, 4900,  4850, 5200, 4850, 4900, 4900, 4900,];
-
+ */
 
 	this.walls = [];
 	this.floors = [];
@@ -59,12 +77,6 @@ function LevelLoader(x,y) {
 
 	this.activator = [];
 
-	for( i = 0; i < this.door_end_info.length/4; i++)  {
-		this.level.push(new Door_End(this.door_end_info[j],this.door_end_info[j+1],this.door_end_info[j+2],this.door_end_info[j+3]));
-		j += 4;
-	}
-	j = 0;
-
 	for( i = 0; i < this.floor_info.length/4; i++)  {
 		this.floors.push(new Floor(this.floor_info[j],this.floor_info[j+1],this.floor_info[j+2],this.floor_info[j+3]));
 		j += 4;
@@ -74,6 +86,12 @@ function LevelLoader(x,y) {
 	for( i = 0; i < this.walls_info.length/4; i++)  {
 		this.level.push(new Wall(this.walls_info[j],this.walls_info[j+1],this.walls_info[j+2],this.walls_info[j+3]));
 		this.walls.push(new Wall(this.walls_info[j],this.walls_info[j+1],this.walls_info[j+2],this.walls_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < this.door_end_info.length/4; i++)  {
+		this.level.push(new Door_End(this.door_end_info[j],this.door_end_info[j+1],this.door_end_info[j+2],this.door_end_info[j+3]));
 		j += 4;
 	}
 	j = 0;
@@ -231,47 +249,141 @@ function LevelLoader(x,y) {
 
 function LevelUpDate() {
 
-	game.level.loadetLevel += 1;
+	game.level.walls_info =  [];
+
+	game.level.floor_info = [];
+
+	game.level.keys_end_info = [];
+	game.level.door_end_info = [];
+
+	game.level.doors_steel_info = [];
+	game.level.keys_steel_info = [];
+	game.level.button_info = [];
+
+	game.level.activator_info = [];
+
+	game.level.speer_boxes_info = [];
+	game.level.speer_umleit_info = [];
+	game.level.boxes_info = [];
+
+	game.level.telebs_info = [];
+	game.level.teleps_info = [];
+
+	game.level.stoneT_info = [];
+
 
 	game.level.walls = [];
-	game.level.keys_end = [];
-	game.level.door_end = [];
+	game.level.floors = [];
 
-	console.log("Level: " + game.level.loadetLevel);
+	game.level.level = [];
 
+	game.level.speers = [];
+	game.level.umleiter = [];
+	game.level.boxes = [];
 
-	// ################    1    ##########
-	var j = 0;
+	game.level.teleps = [];
+	game.level.telebs = [];
 
-	if(game.level.loadetLevel == 1) {
-
-		for( i = 0; i < game.level.walls_info2.length/4; i++)  {
-
-			game.level.walls.push(new Wall(game.level.walls_info2[j],game.level.walls_info2[j+1],game.level.walls_info2[j+2],game.level.walls_info2[j+3]));
-
-			j += 4;
-		}
-		j = 0;
-
-		for( i = 0; i < game.level.door_end_info2.length/4; i++)  {
-
-			game.level.door_end.push(new Door_End(game.level.door_end_info2[j],game.level.door_end_info2[j+1],game.level.door_end_info2[j+2],game.level.door_end_info2[j+3]));
-
-			j += 4;
-		}
-		j = 0;
-
-		for(i=0; i < game.level.keys_end_info2.length/2; i++) {
-
-			game.level.keys_end.push(new Key_End(game.level.keys_end_info2[j], game.level.keys_end_info2[j+1]));
-
-			j += 2;
-		}
-		j = 0;
+	game.level.activator = [];
 
 
+	game.level.loadetLevel++;
+	setNewLevel(game.level.loadetLevel);
+
+
+	for( i = 0; i < game.level.floor_info.length/4; i++)  {
+		game.level.floors.push(new Floor(game.level.floor_info[j],game.level.floor_info[j+1],game.level.floor_info[j+2],game.level.floor_info[j+3]));
+		j += 4;
 	}
+	j = 0;
 
+	for( i = 0; i < game.level.walls_info.length/4; i++)  {
+		game.level.level.push(new Wall(game.level.walls_info[j],game.level.walls_info[j+1],game.level.walls_info[j+2],game.level.walls_info[j+3]));
+		game.level.walls.push(new Wall(game.level.walls_info[j],game.level.walls_info[j+1],game.level.walls_info[j+2],game.level.walls_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.door_end_info.length/4; i++)  {
+		game.level.level.push(new Door_End(game.level.door_end_info[j],game.level.door_end_info[j+1],game.level.door_end_info[j+2],game.level.door_end_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for(i=0; i < game.level.keys_end_info.length/2; i++) {
+		game.level.level.push(new Key_End(game.level.keys_end_info[j], game.level.keys_end_info[j+1]));
+		j += 2;
+	}
+	j = 0;
+
+	for(i=0; i < game.level.button_info.length/4; i++) {
+		game.level.level.push(new Button(game.level.button_info[j], game.level.button_info[j+1], game.level.button_info[j+2], game.level.button_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for(i=0; i < game.level.activator_info.length/4; i++) {
+		game.level.activator.push(new Activator(game.level.activator_info[j], game.level.activator_info[j+1], game.level.activator_info[j+2], game.level.activator_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for(i=0; i < game.level.keys_steel_info.length/2; i++) {
+		game.level.level.push(new Key_Steel(game.level.keys_steel_info[j], game.level.keys_steel_info[j+1]));
+		j += 2;
+	}
+	j = 0;
+
+	for(i=0; i < game.level.doors_steel_info.length/6; i++) {
+		game.level.level.push(new Door_Steel(game.level.doors_steel_info[j], game.level.doors_steel_info[j+1], game.level.doors_steel_info[j+2], game.level.doors_steel_info[j+3], game.level.doors_steel_info[j+4], game.level.doors_steel_info[j+5]));
+		j += 6;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.speer_boxes_info.length/4; i++)  {
+		game.level.level.push(new Speer_box(game.level.speer_boxes_info[j],game.level.speer_boxes_info[j+1],game.level.speer_boxes_info[j+2],game.level.speer_boxes_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.speer_umleit_info.length/3; i++)  {
+		game.level.umleiter.push(new Umleiter(game.level.speer_umleit_info[j],game.level.speer_umleit_info[j+1],game.level.speer_umleit_info[j+2]));
+		game.level.umleiter[i].getVelocity();
+		j += 3;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.boxes_info.length/2; i++)  {
+
+		game.level.boxes.push(new Box(game.level.boxes_info[j],game.level.boxes_info[j+1]));
+
+		j += 2;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.teleps_info.length/4; i++)  {
+
+		game.level.teleps.push(new TeleporterP(game.level.teleps_info[j],game.level.teleps_info[j+1], game.level.teleps_info[j+2],game.level.teleps_info[j+3]));
+
+		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.telebs_info.length/4; i++)  {
+
+		game.level.telebs.push(new TeleporterB(game.level.telebs_info[j],game.level.telebs_info[j+1], game.level.telebs_info[j+2],game.level.telebs_info[j+3]));
+
+		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.stoneT_info.length/2; i++)  {
+
+		game.level.level.push(new DropStone(game.level.stoneT_info[j],game.level.stoneT_info[j+1]));
+
+		j += 2;
+	}
+	j = 0;
 
 	this.reset = createVector(5000,5000);
 	game.player.position = this.reset;
