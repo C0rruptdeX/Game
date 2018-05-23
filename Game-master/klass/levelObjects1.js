@@ -144,7 +144,7 @@ function Door_End(x,y, w,h) {
 				alert("Neues Level Laden ");
 				game.player.key_end -= 1;
 
-				LevelUpDate();
+				LevelUpDate(false);
 			}
 		}
 	}

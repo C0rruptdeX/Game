@@ -1,4 +1,5 @@
 function keyPressed(){
+
 	if(keyCode == 71){
 		if(!game.ghost.visible){
 			game.ghost.visible = true;
@@ -53,6 +54,9 @@ function keyPressed(){
 		game.level.umleiter[game.player.yourUmIndex].getVelocity();
 	}
 
+
+
+
 	if(keyCode == 70){
 		if(game.ghost.visible) {
 			if(!game.ghost.hasBox) {
@@ -75,4 +79,13 @@ function keyPressed(){
 			}
 		}
 	}
+
+	if(keyCode == 16) {
+
+		LevelUpDate(true);
+		game.player.key_end = 0;
+		game.player.key_steel = 0;
+
+	}
+
 }

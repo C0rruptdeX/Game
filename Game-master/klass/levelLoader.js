@@ -2,25 +2,19 @@ function LevelLoader(x,y) {
 
 	this.position = createVector(x,y);
 	var j = 0;
-	this.loadetLevel = 0;
+	this.loadetLevel = -1;
 	this.help = 0;
 
-	this.atStart = false;
+	this.atStart = true;
 
 	//    x l/r , y u/d , w , h
 
-	this.walls_info =  [4500, 5000, 300, 20,  4500, 5000, 20, 300,   4780, 4850, 20, 150,   4900, 4850, 20, 150,
-						4780, 4700, 20, 150,  4900, 4700, 20, 150,   4800, 4700, 120, 20,   4900, 5000, 20, 150,
-						4900, 4900, 150, 20,  5100, 5000, 20, 150,   5100, 4900, 20, 150,   4950, 4900, 150, 20,
-						4850, 4900, 150, 20,  4900, 5100, 130, 20,   5100, 5130, 20, 130,   5000, 5180, 120, 20,
-						5100, 5200, 20, 150,  4900, 5130, 20, 150,   4900, 5260, 130, 20,   4980, 5350, 140, 20,
-						4780, 5350, 200, 20,  4780, 5100, 20, 250,   4620, 5100, 180, 20,   4620, 5100, 20, 200,
-						4500, 5290, 140, 20,];
+	this.walls_info =  [];
 
-	this.keys_end_info = [4850, 4730];
-	this.door_end_info = [4535, 5285, 70, 30];
+	this.keys_end_info = [];
+	this.door_end_info = [];
 
-	this.floor_info = [4800, 4901, 310, 450,   4800, 4701, 100, 200,   4501, 5000, 120, 300,      4501, 5000, 420, 100];
+	this.floor_info = [];
 
 	this.doors_steel_info = [];
 	this.keys_steel_info = [];
@@ -36,6 +30,7 @@ function LevelLoader(x,y) {
 	this.teleps_info = [];
 
 	this.stoneT_info = [];
+
 
   /*  ############ test level ##########
 
@@ -77,6 +72,7 @@ function LevelLoader(x,y) {
 
 	this.activator = [];
 
+	/*
 	for( i = 0; i < this.floor_info.length/4; i++)  {
 		this.floors.push(new Floor(this.floor_info[j],this.floor_info[j+1],this.floor_info[j+2],this.floor_info[j+3]));
 		j += 4;
@@ -171,10 +167,17 @@ function LevelLoader(x,y) {
 	}
 	j = 0;
 
+	*/
+
 // ################################################################
 
 
 	this.update = function() {
+
+		if(this.atStart) {
+			LevelUpDate(false);
+			this.atStart = false;
+		}
 
 		for(i=0; i<this.level.length; i++){
 			this.level[i].update();
@@ -247,7 +250,9 @@ function LevelLoader(x,y) {
 
 }
 
-function LevelUpDate() {
+
+
+function LevelUpDate(trueReset) {
 
 	game.level.walls_info =  [];
 
@@ -286,10 +291,13 @@ function LevelUpDate() {
 
 	game.level.activator = [];
 
+	if(!trueReset) {
+		game.level.loadetLevel++;
+	}
 
-	game.level.loadetLevel++;
 	setNewLevel(game.level.loadetLevel);
 
+	var j = 0;
 
 	for( i = 0; i < game.level.floor_info.length/4; i++)  {
 		game.level.floors.push(new Floor(game.level.floor_info[j],game.level.floor_info[j+1],game.level.floor_info[j+2],game.level.floor_info[j+3]));
