@@ -82,9 +82,28 @@ function keyPressed(){
 
 	if(keyCode == 16) {
 
-		LevelUpDate(true);
+		LevelUpDate();
 		game.player.key_end = 0;
 		game.player.key_steel = 0;
+		game.player.hasBox = false;
+		game.player.hasUm = false;
+		game.player.yourBoxIndex = null;
+		game.player.yourUmIndex = null;
+
+		game.player.isDead = false;
+
+	}else if(keyCode == 17) {
+		game.level.loadetLevel++;
+
+		LevelUpDate();
+		game.player.key_end = 0;
+		game.player.key_steel = 0;
+		game.player.hasBox = false;
+		game.player.hasUm = false;
+		game.player.yourBoxIndex = null;
+		game.player.yourUmIndex = null;
+
+		game.player.isDead = false;
 
 	}
 

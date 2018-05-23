@@ -1,10 +1,8 @@
 
 
-function setNewLevel(nr) {
+function setNewLevel() {
 
-  var levelNummber = nr;
-
-  if(levelNummber == 0) {
+  if(game.level.loadetLevel == 0) {
     game.level.walls_info =  [4500, 5000, 300, 20,  4500, 5000, 20, 300,   4780, 4850, 20, 150,   4900, 4850, 20, 150,
   						4780, 4700, 20, 150,  4900, 4700, 20, 150,   4800, 4700, 120, 20,   4900, 5000, 20, 150,
   						4900, 4900, 150, 20,  5100, 5000, 20, 150,   5100, 4900, 20, 150,   4950, 4900, 150, 20,
@@ -16,7 +14,7 @@ function setNewLevel(nr) {
   	game.level.keys_end_info = [4850, 4730];
   	game.level.door_end_info = [4535, 5285, 70, 30];
 
-  	game.level.floor_info = [4800, 4901, 310, 450,   4800, 4701, 100, 200,   4501, 5000, 120, 300,      4501, 5000, 420, 100];
+  	game.level.floor_info = [4800, 4901, 310, 450,   4800, 4701, 100, 200,   4501, 5000, 120, 300,      4501, 5000, 420, 110];
 
   	game.level.doors_steel_info = [];
   	game.level.keys_steel_info = [];
@@ -34,8 +32,8 @@ function setNewLevel(nr) {
   	game.level.stoneT_info = [];
   }
 
-  if(levelNummber == 1) {
-    game.level.walls_info =  [];
+  if(game.level.loadetLevel == 1) {
+    game.level.walls_info =  [4900, 4600, 20, 300,   4900, 4900, 300, 20,];
 
   	game.level.floor_info = [];
 

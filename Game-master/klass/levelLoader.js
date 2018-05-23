@@ -1,9 +1,7 @@
 function LevelLoader(x,y) {
 
 	this.position = createVector(x,y);
-	var j = 0;
-	this.loadetLevel = -1;
-	this.help = 0;
+	this.loadetLevel = 0;
 
 	this.atStart = true;
 
@@ -30,6 +28,20 @@ function LevelLoader(x,y) {
 	this.teleps_info = [];
 
 	this.stoneT_info = [];
+
+	this.walls = [];
+	this.floors = [];
+
+	this.level = [];
+
+	this.speers = [];
+	this.umleiter = [];
+	this.boxes = [];
+
+	this.teleps = [];
+	this.telebs = [];
+
+	this.activator = [];
 
 
   /*  ############ test level ##########
@@ -58,116 +70,6 @@ function LevelLoader(x,y) {
 	this.stoneT_info = [4800, 4900,  4850, 5200, 4850, 4900, 4900, 4900,];
  */
 
-	this.walls = [];
-	this.floors = [];
-
-	this.level = [];
-
-	this.speers = [];
-	this.umleiter = [];
-	this.boxes = [];
-
-	this.teleps = [];
-	this.telebs = [];
-
-	this.activator = [];
-
-	/*
-	for( i = 0; i < this.floor_info.length/4; i++)  {
-		this.floors.push(new Floor(this.floor_info[j],this.floor_info[j+1],this.floor_info[j+2],this.floor_info[j+3]));
-		j += 4;
-	}
-	j = 0;
-
-	for( i = 0; i < this.walls_info.length/4; i++)  {
-		this.level.push(new Wall(this.walls_info[j],this.walls_info[j+1],this.walls_info[j+2],this.walls_info[j+3]));
-		this.walls.push(new Wall(this.walls_info[j],this.walls_info[j+1],this.walls_info[j+2],this.walls_info[j+3]));
-		j += 4;
-	}
-	j = 0;
-
-	for( i = 0; i < this.door_end_info.length/4; i++)  {
-		this.level.push(new Door_End(this.door_end_info[j],this.door_end_info[j+1],this.door_end_info[j+2],this.door_end_info[j+3]));
-		j += 4;
-	}
-	j = 0;
-
-	for(i=0; i < this.keys_end_info.length/2; i++) {
-		this.level.push(new Key_End(this.keys_end_info[j], this.keys_end_info[j+1]));
-		j += 2;
-	}
-	j = 0;
-
-	for(i=0; i < this.button_info.length/4; i++) {
-		this.level.push(new Button(this.button_info[j], this.button_info[j+1], this.button_info[j+2], this.button_info[j+3]));
-		j += 4;
-	}
-	j = 0;
-
-	for(i=0; i < this.activator_info.length/4; i++) {
-		this.activator.push(new Activator(this.activator_info[j], this.activator_info[j+1], this.activator_info[j+2], this.activator_info[j+3]));
-		j += 4;
-	}
-	j = 0;
-
-	for(i=0; i < this.keys_steel_info.length/2; i++) {
-		this.level.push(new Key_Steel(this.keys_steel_info[j], this.keys_steel_info[j+1]));
-		j += 2;
-	}
-	j = 0;
-
-	for(i=0; i < this.doors_steel_info.length/6; i++) {
-		this.level.push(new Door_Steel(this.doors_steel_info[j], this.doors_steel_info[j+1], this.doors_steel_info[j+2], this.doors_steel_info[j+3], this.doors_steel_info[j+4], this.doors_steel_info[j+5]));
-		j += 6;
-	}
-	j = 0;
-
-	for( i = 0; i < this.speer_boxes_info.length/4; i++)  {
-		this.level.push(new Speer_box(this.speer_boxes_info[j],this.speer_boxes_info[j+1],this.speer_boxes_info[j+2],this.speer_boxes_info[j+3]));
-		j += 4;
-	}
-	j = 0;
-
-	for( i = 0; i < this.speer_umleit_info.length/3; i++)  {
-		this.umleiter.push(new Umleiter(this.speer_umleit_info[j],this.speer_umleit_info[j+1],this.speer_umleit_info[j+2]));
-		this.umleiter[i].getVelocity();
-		j += 3;
-	}
-	j = 0;
-
-	for( i = 0; i < this.boxes_info.length/2; i++)  {
-
-		this.boxes.push(new Box(this.boxes_info[j],this.boxes_info[j+1]));
-
-		j += 2;
-	}
-	j = 0;
-
-	for( i = 0; i < this.teleps_info.length/4; i++)  {
-
-		this.teleps.push(new TeleporterP(this.teleps_info[j],this.teleps_info[j+1], this.teleps_info[j+2],this.teleps_info[j+3]));
-
-		j += 4;
-	}
-	j = 0;
-
-	for( i = 0; i < this.telebs_info.length/4; i++)  {
-
-		this.telebs.push(new TeleporterB(this.telebs_info[j],this.telebs_info[j+1], this.telebs_info[j+2],this.telebs_info[j+3]));
-
-		j += 4;
-	}
-	j = 0;
-
-	for( i = 0; i < this.stoneT_info.length/2; i++)  {
-
-		this.level.push(new DropStone(this.stoneT_info[j],this.stoneT_info[j+1]));
-
-		j += 2;
-	}
-	j = 0;
-
-	*/
 
 // ################################################################
 
@@ -175,7 +77,7 @@ function LevelLoader(x,y) {
 	this.update = function() {
 
 		if(this.atStart) {
-			LevelUpDate(false);
+			LevelUpDate();
 			this.atStart = false;
 		}
 
@@ -252,14 +154,16 @@ function LevelLoader(x,y) {
 
 
 
-function LevelUpDate(trueReset) {
+function LevelUpDate() {
+
+	console.log("hhhhhhhhhhhhiiiiiiiiiiiii");
 
 	game.level.walls_info =  [];
 
-	game.level.floor_info = [];
-
 	game.level.keys_end_info = [];
 	game.level.door_end_info = [];
+
+	game.level.floor_info = [];
 
 	game.level.doors_steel_info = [];
 	game.level.keys_steel_info = [];
@@ -276,7 +180,6 @@ function LevelUpDate(trueReset) {
 
 	game.level.stoneT_info = [];
 
-
 	game.level.walls = [];
 	game.level.floors = [];
 
@@ -291,11 +194,7 @@ function LevelUpDate(trueReset) {
 
 	game.level.activator = [];
 
-	if(!trueReset) {
-		game.level.loadetLevel++;
-	}
-
-	setNewLevel(game.level.loadetLevel);
+	setNewLevel();
 
 	var j = 0;
 
