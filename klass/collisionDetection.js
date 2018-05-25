@@ -42,7 +42,7 @@ function resetP(direction) {
 	if (keyIsDown(65)) {
 			newVelocity2.x -= -4.001;
 	}
-	if (keyIsDown(68)) {
+	if (keyIsDown(68)) { 
 			newVelocity2.x += -4.001;
 	}
 
