@@ -30,7 +30,7 @@ function collRE(width, height, position1, radios2, position2) {
 }
 
 
-function resetP(direction) {
+function resetP() {
 	var newVelocity2 = createVector(0, 0);
 
 	if (keyIsDown(87)) {
@@ -42,7 +42,7 @@ function resetP(direction) {
 	if (keyIsDown(65)) {
 			newVelocity2.x -= -4.001;
 	}
-	if (keyIsDown(68)) { 
+	if (keyIsDown(68)) {
 			newVelocity2.x += -4.001;
 	}
 
