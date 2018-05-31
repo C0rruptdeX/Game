@@ -5,6 +5,7 @@ function Game() {
 	this.ghost = new Ghost(5000, 5000);
 	this.level = new LevelLoader(0, 0);
 
+	this.camSet = true;
 
 	this.update = function() {
 
@@ -18,9 +19,11 @@ function Game() {
 
 		this.level.update();
 
-
-		translate(width/2 - this.player.position.x, height/2 - this.player.position.y);
-
+		if(this.camSet) {
+			translate(width/2 - this.player.position.x, height/2 - this.player.position.y);
+		}else{
+			translate(width/2 - this.ghost.position.x, height/2 - this.ghost.position.y);
+		}
 
 	}
 

@@ -1,5 +1,13 @@
 function keyPressed(){
 
+	if(keyCode == 81) {
+		if(game.ghost.visible && game.camSet) {
+			game.camSet = false;
+		}else if(!game.camSet) {
+			game.camSet = true;
+		}
+	}
+
 	if(keyCode == 71){
 		if(!game.ghost.visible){
 			game.ghost.visible = true;
@@ -8,6 +16,7 @@ function keyPressed(){
 			game.ghost.visible = false;
 			game.ghost.hasBox = false;
 			game.ghost.yourBoxIndex = null;
+			game.camSet = true;
 		}
 	}
 
