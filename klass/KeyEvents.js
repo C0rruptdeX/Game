@@ -14,9 +14,9 @@ function keyPressed(){
 			game.ghost.position.set(game.player.position);  //  gegenstand geist folgen
 		}else{
 			game.ghost.visible = false;
+			game.camSet = true;
 			game.ghost.hasBox = false;
 			game.ghost.yourBoxIndex = null;
-			game.camSet = true;
 		}
 	}
 
@@ -90,6 +90,8 @@ function keyPressed(){
 	}
 
 	if(keyCode == 16) {
+		game.ghost.visible = false;
+		game.camSet = true;
 
 		LevelUpDate();
 		game.player.key_end = 0;
@@ -103,6 +105,9 @@ function keyPressed(){
 
 	}else if(keyCode == 17) {
 		game.level.loadetLevel++;
+
+		game.ghost.visible = false;
+		game.camSet = true;
 
 		LevelUpDate();
 		game.player.key_end = 0;
