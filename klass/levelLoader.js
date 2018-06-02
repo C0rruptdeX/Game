@@ -194,6 +194,15 @@ function LevelUpDate() {
 
 	game.level.activator = [];
 
+	game.ghost.visible = false;
+	game.ghost.hasBox = false;
+	game.ghost.yourBoxIndex = null;
+
+	game.player.hasBox = false;
+	game.player.hasUm = false;
+	game.player.yourBoxIndex = null;
+	game.player.yourUmIndex = null;
+
 	setNewLevel();
 
 	var j = 0;
