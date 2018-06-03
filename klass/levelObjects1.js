@@ -82,9 +82,9 @@ function Magie(x,y, w,h) {
 	this.render = function() {
 
 		push();
-		strokeWeight(1.5);
+		strokeWeight(1);
 		stroke(255, 163, 207);
-		fill(30,30,30);
+		noFill();
 		rect(this.position.x, this.position.y, this.width, this.height);
 		pop();
 

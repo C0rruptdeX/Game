@@ -11,8 +11,8 @@ function setNewLevel() {
   						4780, 5350, 200, 20,  4780, 5100, 20, 250,   4620, 5100, 180, 20,   4620, 5100, 20, 200,
   						4500, 5290, 140, 20,];
 
-    game.magie_info = [];
-  	game.doors_hard_info = [];
+    game.level.magie_info = [];
+  	game.level.doors_hard_info = [];
 
   	game.level.keys_end_info = [4850, 4730];
   	game.level.door_end_info = [4535, 5285, 70, 30];
@@ -41,8 +41,8 @@ function setNewLevel() {
 
   	game.level.floor_info = [4801, 4590, 110, 350,   4601, 4505, 700, 110,   5201, 4590, 110, 350,     4395, 4905, 910, 210,   4395, 4705, 110, 210,   4495, 5100, 110, 210,];
 
-    game.magie_info = [];
-  	game.doors_hard_info = [];
+    game.level.magie_info = [];
+  	game.level.doors_hard_info = [];
 
   	game.level.keys_end_info = [4650, 4550];
   	game.level.door_end_info = [4515, 5295, 70, 30];
@@ -74,8 +74,8 @@ function setNewLevel() {
   	game.level.floor_info = [4902, 4790, 265, 310,   4812, 4690, 365, 100,   5112, 4690, 190, 180,    6442, 4330, 200, 702,    6652, 4330, 250, 160,   6652, 4680, 250, 175,
                              6682, 4250, 130, 160,   2902, 2800, 253, 251,];
 
-    game.magie_info = [];
-   	game.doors_hard_info = [];
+    game.level.magie_info = [];
+   	game.level.doors_hard_info = [];
 
   	game.level.keys_end_info = [6490, 4810,];
   	game.level.door_end_info = [6715, 4225, 70, 30];
@@ -102,11 +102,11 @@ function setNewLevel() {
   	game.level.floor_info = [4902, 4790, 265, 310,   4812, 4690, 365, 100,   5112, 4690, 190, 180,    6442, 4330, 200, 702,    6652, 4330, 250, 160,   6652, 4680, 250, 175,
                              6682, 4250, 130, 160,   2902, 2800, 253, 251,];
 
-    game.magie_info = [4902, 4900, 305, 500,];
-   	game.doors_hard_info = [];
+    game.level.magie_info = [4902, 4900, 305, 500,];
+   	game.level.doors_hard_info = [];
 
-  	game.level.keys_end_info = [6490, 4810,];
-  	game.level.door_end_info = [6715, 4225, 70, 30];
+  	game.level.level.keys_end_info = [6490, 4810,];
+  	game.level.level.door_end_info = [6715, 4225, 70, 30];
 
   	game.level.doors_steel_info = [4960, 4845, 80, 30, 0, 0,  6534, 4845, 80, 30, 1, 2,  6635, 4760, 30, 80, 0, 0,  6473, 4655, 80, 30, 1, 3,   6635, 4370, 30, 80,  1, 4,
                                    6710, 4325, 80, 30, 1, 5,];
