@@ -190,7 +190,7 @@ function LevelUpDate() {
 	game.level.speer_boxes_info = [];
 	game.level.speer_umleit_info = [];
 	game.level.boxes_info = [];
-	game.level.blocks_info = [];
+	game.level.block_info = [];
 
 	game.level.telebs_info = [];
 	game.level.teleps_info = [];

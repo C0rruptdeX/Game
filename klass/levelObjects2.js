@@ -79,7 +79,7 @@ function Speer(x,y, v) {
   this.velocity = v;
 
 	this.time_lived = 0;
-	this.TIME_TO_LIVE = 1200;
+	this.TIME_TO_LIVE = 2100;
 
 	this.breakTime = 10;
 
