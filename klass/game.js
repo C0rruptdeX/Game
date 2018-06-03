@@ -29,9 +29,6 @@ function Game() {
 
 	this.render = function() {
 
-		test_grid(10000, 100);
-		//test_box(5000, 4500);
-
 		this.level.render();
 
 		this.player.render();
