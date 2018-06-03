@@ -8,8 +8,10 @@ function Player(x,y) {
 	this.key_steel = 0;
 
 	this.hasBox = false;
+	this.hasBlock = false;
 	this.hasUm = false;
 	this.yourBoxIndex = null;
+	this.yourBlockIndex = null;
 	this.yourUmIndex = null;
 
 	this.isDead = false;
@@ -37,6 +39,8 @@ function Player(x,y) {
 			game.level.boxes[this.yourBoxIndex].position.add(this.velocity);
 		}else if(this.hasUm) {
 			game.level.umleiter[this.yourUmIndex].position.add(this.velocity);
+		}else if(this.hasBlock) {
+			game.level.blocks[this.yourBlockIndex].position.add(this.velocity);
 		}
 	}
 

@@ -144,6 +144,7 @@ function setNewLevel() {
   	game.level.doors_steel_info = [  5155, 4945, 30, 80, 1, 2,  ];
   	game.level.keys_steel_info = [];
   	game.level.button_info = [5205, 4250, 1, 2,   ];
+    game.level.block_info = [4940, 5050,  4990, 5050,  5040, 5050,   5090, 5050,];
 
   	game.level.activator_info = [];
 
@@ -151,7 +152,7 @@ function setNewLevel() {
                                    4660, 4610, 100, 3,   4760, 4610, 100, 3,    4890, 4610, 100, 3,     5415, 4670, 150, 2,  5415, 4700, 100, 2,
                                    5215, 4370, 150, 3,   5090, 4610, 100, 3,];
   	game.level.speer_umleit_info = [];
-  	game.level.boxes_info = [4940, 5050,  4990, 5050,  5040, 5050,   5090, 5050,];
+  	game.level.boxes_info = [];
 
   	game.level.telebs_info = [5120, 4860, 4740, 4850,];
   	game.level.teleps_info = [];

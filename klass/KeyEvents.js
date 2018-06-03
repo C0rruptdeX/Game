@@ -22,7 +22,7 @@ function keyPressed(){
 
 	if(keyCode == 69){
 
-		if(!game.player.hasBox && !game.player.hasUm) {
+		if(!game.player.hasBox && !game.player.hasUm && !game.player.hasBlock) {
 			var i = 0;
 			var stop = false;
 
@@ -44,13 +44,26 @@ function keyPressed(){
 				}
 				i++;
 			}
+			i =0;
 
-		}else if(game.player.hasBox || game.player.hasUm) {
+			while(!stop && i < game.level.blocks.length) {
+				var distance = sqrt(pow(abs(20/2+game.level.blocks[i].position.x-game.player.position.x),2)+pow(20/2+(game.level.blocks[i].position.y-game.player.position.y),2));
+				if(distance < 45) {
+					game.player.hasBlock = true;
+					game.player.yourBlockIndex = i;
+				}
+				i++;
+			}
+
+		}else if(game.player.hasBox || game.player.hasUm || game.player.hasBlock) {
 			game.player.hasBox = false;
 			game.player.yourBoxIndex = null;
 
 			game.player.hasUm = false;
 			game.player.yourUmIndex = null;
+
+			game.player.hasBlock = false;
+			game.player.yourBlockIndex = null;
 
 		}
 	}

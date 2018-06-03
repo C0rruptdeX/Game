@@ -52,6 +52,8 @@ function resetP() {
 			game.level.boxes[game.player.yourBoxIndex].position.add(newVelocity2);
 		} else if(game.player.hasUm) {
 			game.level.umleiter[game.player.yourUmIndex].position.add(newVelocity2);
+		} else if(game.player.hasBlock) {
+			game.level.blocks[game.player.yourBlockIndex].position.add(newVelocity2);
 		}
 	}
 

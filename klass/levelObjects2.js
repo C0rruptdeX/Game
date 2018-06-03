@@ -136,10 +136,13 @@ function Speer(x,y, v) {
 			}
 			i = 0;
 
-			while(i < game.level.activator.length && !stop) {
-				if(collRR(20, 20, game.level.activator[i].position, 10, 10, this.position)) {
-					game.level.activator[i].gotHit_thing();
+			while(i < game.level.blocks.length && !stop) {
+				if(collRR(game.level.blocks[i].width, game.level.blocks[i].height, game.level.blocks[i].position, 10,10, this.position)) {
 					game.level.speers.splice(game.level.speers.indexOf(this),1);
+					 if(i == game.player.yourBlockIndex) {
+						game.player.yourBlockIndex = null;
+						game.player.hasBlock = false;
+					}
 					stop = true;
 				}
 				i++;
@@ -342,6 +345,34 @@ function Box(x,y) {
 	this.render = function() {
 		push();
 		fill(139,69,19);
+		rect(this.position.x, this.position.y, this.width, this.height);
+		pop();
+
+	}
+}
+
+function Block(x,y) {
+
+	this.position = createVector(x,y);
+	this.width = 40+1;
+	this.height = 40+1;
+	this.velocity2 = createVector(0,0);
+
+	this.update = function() {
+		if(game.level.blocks.indexOf(this) != game.player.yourBlockIndex) {
+			this.collide();
+		}
+	}
+
+	this.collide = function() {
+		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position)){
+			resetP();
+		}
+	}
+
+	this.render = function() {
+		push();
+		fill(73, 81, 67);
 		rect(this.position.x, this.position.y, this.width, this.height);
 		pop();
 

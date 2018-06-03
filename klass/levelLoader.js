@@ -26,6 +26,7 @@ function LevelLoader(x,y) {
 	this.speer_boxes_info = [];
 	this.speer_umleit_info = [];
 	this.boxes_info = [];
+	this.block_info = [];
 
 	this.telebs_info = [];
 	this.teleps_info = [];
@@ -40,6 +41,7 @@ function LevelLoader(x,y) {
 	this.speers = [];
 	this.umleiter = [];
 	this.boxes = [];
+	this.blocks = [];
 
 	this.teleps = [];
 	this.telebs = [];
@@ -108,6 +110,10 @@ function LevelLoader(x,y) {
 			this.boxes[i].update();
 		}
 
+		for(i = 0; i < this.blocks.length; i++) {
+			this.blocks[i].update();
+		}
+
 		for(i = 0; i < this.activator.length; i++) {
 			this.activator[i].update();
 		}
@@ -142,6 +148,10 @@ function LevelLoader(x,y) {
 
 		for(i = 0; i < this.boxes.length; i++) {
 			this.boxes[i].render();
+		}
+
+		for(i = 0; i < this.blocks.length; i++) {
+			this.blocks[i].render();
 		}
 
 		for(i = 0; i < this.activator.length; i++) {
@@ -180,6 +190,7 @@ function LevelUpDate() {
 	game.level.speer_boxes_info = [];
 	game.level.speer_umleit_info = [];
 	game.level.boxes_info = [];
+	game.level.blocks_info = [];
 
 	game.level.telebs_info = [];
 	game.level.teleps_info = [];
@@ -194,6 +205,7 @@ function LevelUpDate() {
 	game.level.speers = [];
 	game.level.umleiter = [];
 	game.level.boxes = [];
+	game.level.blocks = [];
 
 	game.level.teleps = [];
 	game.level.telebs = [];
@@ -209,6 +221,9 @@ function LevelUpDate() {
 	game.player.hasUm = false;
 	game.player.yourBoxIndex = null;
 	game.player.yourUmIndex = null;
+
+	game.player.hasBlock = false;
+	game.player.yourBlockIndex = null;
 
 	setNewLevel();
 
@@ -291,6 +306,14 @@ function LevelUpDate() {
 	for( i = 0; i < game.level.boxes_info.length/2; i++)  {
 
 		game.level.boxes.push(new Box(game.level.boxes_info[j],game.level.boxes_info[j+1]));
+
+		j += 2;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.block_info.length/2; i++)  {
+
+		game.level.blocks.push(new Block(game.level.block_info[j],game.level.block_info[j+1]));
 
 		j += 2;
 	}
