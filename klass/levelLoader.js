@@ -9,6 +9,9 @@ function LevelLoader(x,y) {
 
 	this.walls_info =  [];
 
+	this.magie_info = [];
+	this.doors_hard_info = [];
+
 	this.keys_end_info = [];
 	this.door_end_info = [];
 
@@ -160,6 +163,9 @@ function LevelUpDate() {
 
 	game.level.walls_info =  [];
 
+	game.level.magie_info = [];
+	game.level.doors_hard_info = [];
+
 	game.level.keys_end_info = [];
 	game.level.door_end_info = [];
 
@@ -194,6 +200,7 @@ function LevelUpDate() {
 
 	game.level.activator = [];
 
+
 	game.ghost.visible = false;
 	game.ghost.hasBox = false;
 	game.ghost.yourBoxIndex = null;
@@ -209,6 +216,18 @@ function LevelUpDate() {
 
 	for( i = 0; i < game.level.floor_info.length/4; i++)  {
 		game.level.floors.push(new Floor(game.level.floor_info[j],game.level.floor_info[j+1],game.level.floor_info[j+2],game.level.floor_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.magie_info.length/4; i++)  {
+		game.level.level.push(new Magie(game.level.magie_info[j],game.level.magie_info[j+1],game.level.magie_info[j+2],game.level.magie_info[j+3]));
+		j += 4;
+	}
+	j = 0;
+
+	for( i = 0; i < game.level.doors_hard_info.length/5; i++)  {
+		game.level.level.push(new Door_hard(game.level.doors_hard_info[j],game.level.doors_hard_info[j+1],game.level.doors_hard_info[j+2],game.level.doors_hard_info[j+3],game.level.doors_hard_info[j+4]));
 		j += 4;
 	}
 	j = 0;

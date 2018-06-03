@@ -54,6 +54,43 @@ function Wall(x,y, w,h) {
 }
 
 
+/*				##########################     Magie    ####################    */
+
+function Magie(x,y, w,h) {
+
+	this.position = createVector(x,y);
+	this.width = w+1;
+	this.height = h+1;
+
+	this.update = function() {
+		this.collide();
+	}
+
+	this.collide = function() {
+
+		if(!game.ghost.visible){
+		}else if(collRE(this.width, this.height, this.position, game.ghost.size, game.ghost.position)){
+			console.log("ghghghghhg");
+			game.ghost.visible = false;
+			game.camSet = true;
+			game.ghost.hasBox = false;
+			game.ghost.yourBoxIndex = null;
+		}
+
+	}
+
+	this.render = function() {
+
+		push();
+		strokeWeight(1.5);
+		stroke(255, 163, 207);
+		fill(30,30,30);
+		rect(this.position.x, this.position.y, this.width, this.height);
+		pop();
+
+	}
+}
+
 /*       ##########################     Key     #######################       */
 
 
@@ -207,6 +244,60 @@ function Door_Steel(x,y, w,h, use,what) {
 		}else{
 			push();
 			fill(105,101,101);
+			rect(this.position.x, this.position.y, this.width, this.height);
+			pop();
+		}
+
+
+	}
+}
+
+/* ____ hard_old_wood_door ###########	*/
+
+function Door_hard(x,y, w,h, use) {
+
+	this.position = createVector(x,y);
+	this.width = w+1;
+	this.height = h+1;
+
+	this.use = use;
+
+	this.isOpen = false;
+
+	this.update = function() {
+		if(!this.isOpen) {
+			this.collide();
+		}
+	}
+
+	this.collide = function() {
+
+		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position)){
+
+			if(this.use == 1 && game.player.key_steel > 0) {
+				game.player.key_steel -= 1;
+
+				this.isOpen = true;
+			}
+			resetP();
+		}else if(game.ghost.visible) {
+			if(collRE(this.width, this.height, this.position, game.ghost.size, game.ghost.position) && game.ghost.hasBox) {
+				resetG();
+			}
+		}
+
+	}
+
+	this.render = function() {
+
+		if(!this.isOpen) {
+			push();
+			fill(61, 42, 23);
+			rect(this.position.x, this.position.y, this.width, this.height);
+			pop();
+		}else{
+			push();
+			fill(35, 23, 11);
 			rect(this.position.x, this.position.y, this.width, this.height);
 			pop();
 		}
