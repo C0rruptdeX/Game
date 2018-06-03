@@ -70,7 +70,6 @@ function Magie(x,y, w,h) {
 
 		if(!game.ghost.visible){
 		}else if(collRE(this.width, this.height, this.position, game.ghost.size, game.ghost.position)){
-			console.log("ghghghghhg");
 			game.ghost.visible = false;
 			game.camSet = true;
 			game.ghost.hasBox = false;

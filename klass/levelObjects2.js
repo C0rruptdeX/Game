@@ -111,6 +111,14 @@ function Speer(x,y, v) {
 			while(i < game.level.boxes.length && !stop) {
 				if(collRR(game.level.boxes[i].width, game.level.boxes[i].height, game.level.boxes[i].position, 10,10, this.position)) {
 					game.level.speers.splice(game.level.speers.indexOf(this),1);
+					if(i == game.ghost.yourBoxIndex) {
+						game.ghost.yourBoxIndex = null;
+						game.ghost.hasBox = false;
+					}else if(i == game.player.yourBoxIndex) {
+						game.player.yourBoxIndex = null;
+						game.player.hasBox = false;
+					}
+					game.level.boxes.splice(i,1);
 					stop = true;
 				}
 				i++;
@@ -395,7 +403,7 @@ function TeleporterP(x,y,  lx,ly) {
 function TeleporterB(x,y,  lx,ly) {
 
 	this.position = createVector(x,y);
-	this.landOnBox = createVector(lx-20,ly-20);
+	this.landOnBox = createVector((lx),(ly));
 	this.width = 30+1;
 	this.coolDown = 0;
 
@@ -439,7 +447,7 @@ function TeleporterB(x,y,  lx,ly) {
 
 		push();
 		fill(77,112,5);
-		ellipse(this.landOn.x, this.landOn.y, this.width-5);
+		ellipse(this.landOnBox.x+20, this.landOnBox.y+20, this.width-5);
 		pop();
 	}
 }
