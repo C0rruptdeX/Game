@@ -28,7 +28,7 @@ function keyPressed(){
 
 			while(!stop && i < game.level.boxes.length) {
 				var distance = sqrt(pow(abs(game.level.boxes[i].width/2+game.level.boxes[i].position.x-game.player.position.x),2)+pow(game.level.boxes[i].width/2+(game.level.boxes[i].position.y-game.player.position.y),2));
-				if(distance < 45 && game.ghost.yourBoxIndex != i) {
+				if(distance < 48 && game.ghost.yourBoxIndex != i) {
 					game.player.hasBox = true;
 					game.player.yourBoxIndex = i;
 				}
@@ -48,7 +48,7 @@ function keyPressed(){
 
 			while(!stop && i < game.level.blocks.length) {
 				var distance = sqrt(pow(abs(20/2+game.level.blocks[i].position.x-game.player.position.x),2)+pow(20/2+(game.level.blocks[i].position.y-game.player.position.y),2));
-				if(distance < 45) {
+				if(distance < 48) {
 					game.player.hasBlock = true;
 					game.player.yourBlockIndex = i;
 				}
