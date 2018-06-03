@@ -139,7 +139,7 @@ function setNewLevel() {
    	game.level.doors_hard_info = [];
 
   	game.level.keys_end_info = [];
-  	game.level.door_end_info = [];
+  	game.level.door_end_info = [4795, 4700, 30, 70];
 
   	game.level.doors_steel_info = [5000, 5090, 20, 30, 1, 0,    5000, 4890, 20, 30, 1, 0,    5000, 4810, 20, 30, 1, 0,    4945, 4620, 30, 20, 1, 0,];
   	game.level.keys_steel_info = [];
@@ -148,8 +148,8 @@ function setNewLevel() {
 
   	game.level.activator_info = [];
 
-  	game.level.speer_boxes_info = [];
-  	game.level.speer_umleit_info = [];
+  	game.level.speer_boxes_info = [5255, 4784, 300, 1,];
+  	game.level.speer_umleit_info = [5255, 4744, 2,];
   	game.level.boxes_info = [];
 
   	game.level.telebs_info = [];
