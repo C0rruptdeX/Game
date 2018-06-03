@@ -104,6 +104,37 @@ function setNewLevel() {
 
   	game.level.floor_info = [4302, 4602, 870, 510,   5169, 4202, 270, 590,  ];
 
+    game.level.magie_info = [];
+   	game.level.doors_hard_info = [4895, 4845, 30, 80, 0,];
+
+  	game.level.keys_end_info = [4990, 4850,];
+  	game.level.door_end_info = [5185, 4950, 30, 70];
+
+  	game.level.doors_steel_info = [  5155, 4945, 30, 80, 1, 2,  ];
+  	game.level.keys_steel_info = [];
+  	game.level.button_info = [5205, 4250, 1, 2,   ];
+
+  	game.level.activator_info = [];
+
+  	game.level.speer_boxes_info = [4685, 4900, 300, 2,   4305, 4960, 100, 0,   4305, 4760, 200, 0,    4305, 4650, 200, 0,  4405, 4610, 200, 3,   4595, 4610, 150, 3,
+                                   4660, 4610, 100, 3,   4760, 4610, 100, 3,    4890, 4610, 100, 3,     5415, 4670, 150, 2,  5415, 4700, 100, 2,
+                                   5215, 4370, 150, 3,   5090, 4610, 100, 3,];
+  	game.level.speer_umleit_info = [];
+  	game.level.boxes_info = [4940, 5050,  4990, 5050,  5040, 5050,   5090, 5050,];
+
+  	game.level.telebs_info = [5120, 4860, 4740, 4850,];
+  	game.level.teleps_info = [];
+
+  	game.level.stoneT_info = [];
+
+  }else if(game.level.loadetLevel == 4) {
+    game.level.walls_info =  [4900, 4925, 20, 190,    4300, 5100, 870, 20,   4900, 4790, 20, 55,    4700, 4780, 470, 50,    4700, 4790, 20, 230,
+                              4300, 4600, 870, 20,    4300, 4600, 20, 500,   5160, 4200, 20, 420,   5170, 4200, 280, 20,    5430, 4200, 20, 590,
+                              5170, 4780, 280, 20,    5280, 4500, 170, 20,   5180, 4360, 170, 20,
+                              5160, 4790, 20, 154,    5160, 5025, 20, 95,    5160, 4925, 50 , 20,   5160, 5025, 50, 20,     5190, 4925, 20, 100,];
+
+  	game.level.floor_info = [4302, 4602, 870, 510,   5169, 4202, 270, 590,  ];
+
     game.level.magie_info = [4902, 4500, 35, 50,];
    	game.level.doors_hard_info = [4895, 4845, 30, 80, 0,];
 
