@@ -220,6 +220,7 @@ function Umleiter(x,y, r) {
 		if(!game.player.hasUm) {
 			this.collide();
 		}else if(game.level.umleiter.indexOf(this) != game.player.yourUmIndex) {
+			this.collide();
 		}
 	}
 

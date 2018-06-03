@@ -37,8 +37,5 @@ function Game() {
 			this.ghost.render();
 		}
 
-
-
 	}
-
 }
