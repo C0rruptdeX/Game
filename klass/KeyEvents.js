@@ -116,7 +116,7 @@ function keyPressed(){
 
 		game.player.isDead = false;
 
-	}else if(keyCode == 17) {
+	}else if(keyCode == 78) {
 		game.level.loadetLevel++;
 
 		game.ghost.visible = false;

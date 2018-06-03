@@ -169,8 +169,6 @@ function LevelLoader(x,y) {
 
 function LevelUpDate() {
 
-	console.log("hhhhhhhhhhhhiiiiiiiiiiiii");
-
 	game.level.walls_info =  [];
 
 	game.level.magie_info = [];

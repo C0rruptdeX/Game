@@ -145,7 +145,7 @@ function setNewLevel() {
   	game.level.keys_end_info = [4850, 5150,];
   	game.level.door_end_info = [4795, 4700, 30, 70];
 
-  	game.level.doors_steel_info = [5000, 5090, 100, 30, 0, 0,    5000, 4890, 100, 30, 1, 0,    5000, 4810, 100, 30, 2, 2,    4945, 4620, 30, 100, 3, 4,    6490,4670, 20, 110, 2, 5,];
+  	game.level.doors_steel_info = [5000, 5090, 100, 30, 0, 0,    5000, 4890, 100, 30, 1, 0,    5000, 4810, 100, 30, 2, 2,    4945, 4620, 30, 80, 3, 4,    6490,4670, 20, 110, 2, 5,];
   	game.level.keys_steel_info = [ 6620,5190, ];
   	game.level.button_info = [6180,4850, 3, 5];
     game.level.block_info = [6560,4870,   6340,4610,];
@@ -160,8 +160,9 @@ function setNewLevel() {
   	game.level.teleps_info = [5250, 5160, 6300,5200,    6200, 4550, 5000,5000];
 
   	game.level.stoneT_info = [5150, 4980,  5050, 4730,];
+
   }else if(game.level.loadetLevel > 4) {
-    
+    alert("Ende der Beta Demo !!!!")
   }
 
 

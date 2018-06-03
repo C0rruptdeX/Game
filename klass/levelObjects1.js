@@ -177,7 +177,6 @@ function Door_End(x,y, w,h) {
 			resetP();
 
 			if(game.player.key_end > 0) {
-				alert("Neues Level Laden ");
 				game.player.key_end -= 1;
 
 				game.level.loadetLevel++;
