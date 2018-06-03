@@ -160,6 +160,8 @@ function setNewLevel() {
   	game.level.teleps_info = [5250, 5160, 6300,5200,    6200, 4550, 5000,5000];
 
   	game.level.stoneT_info = [5150, 4980,  5050, 4730,];
+  }else if(game.level.loadetLevel > 4) {
+    
   }
 
 
