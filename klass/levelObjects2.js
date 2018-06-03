@@ -136,6 +136,16 @@ function Speer(x,y, v) {
 			}
 			i = 0;
 
+			while(i < game.level.activator.length && !stop ) {
+				if(collRR(20, 20, game.level.activator[i].position, 10, 10, this.position)) {
+					game.level.speers.splice(game.level.speers.indexOf(this),1);
+					game.level.activator[i].gotHit_thing();
+					stop = true;
+				}
+				i++;
+			}
+			i = 0;
+
 			while(i < game.level.blocks.length && !stop) {
 				if(collRR(game.level.blocks[i].width, game.level.blocks[i].height, game.level.blocks[i].position, 10,10, this.position)) {
 					game.level.speers.splice(game.level.speers.indexOf(this),1);
