@@ -34,7 +34,7 @@ function Wall(x,y, w,h) {
 	this.collide = function() {
 
 		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position)){
-			resetP();
+			resetP_R(this.width, this.height, this.position, game.player.size, game.player.position);
 		}
 		if(!game.ghost.visible){
 		}else if(collRE(this.width, this.height, this.position, game.ghost.size, game.ghost.position)){
@@ -174,7 +174,7 @@ function Door_End(x,y, w,h) {
 
 		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position)){
 
-			resetP();
+			resetP_R(this.width, this.height, this.position, game.player.size, game.player.position);
 
 			if(game.player.key_end > 0) {
 				game.player.key_end -= 1;
@@ -217,7 +217,7 @@ function Door_Steel(x,y, w,h, use,what) {
 		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position) && !this.Open){
 
 			if(!this.isOpen) {
-				resetP();
+				resetP_R(this.width, this.height, this.position, game.player.size, game.player.position);
 			}
 
 			if(this.use == 1 && game.player.key_steel > 0) {
@@ -277,7 +277,7 @@ function Door_hard(x,y, w,h, use) {
 
 				this.isOpen = true;
 			}
-			resetP();
+			resetP_R(this.width, this.height, this.position, game.player.size, game.player.position);
 		}else if(game.ghost.visible) {
 			if(collRE(this.width, this.height, this.position, game.ghost.size, game.ghost.position) && game.ghost.hasBox) {
 				resetG();
