@@ -32,16 +32,16 @@ function collRE(width, height, position1, radios2, position2) {
 function resetP_R(width, height, position1, radios2, position2) {
 	var newVelocity2 = createVector(0, 0);
 
-	if (position1.y < position2.y+ radios2/2 && position1.y + height > position2.y - radios2/2 && position2.x  < position1.x) {
+	if (position1.y < position2.y + radios2 && position1.y + height > position2.y - radios2 && position2.x  < position1.x) {
 			newVelocity2.x -= 4.001;
 	}
-	if (position1.y < position2.y+ radios2/2 && position1.y + height > position2.y - radios2/2  && position2.x > position1.x + width ) {
+	if (position1.y < position2.y + radios2 && position1.y + height > position2.y - radios2  && position2.x > position1.x + width ) {
 			newVelocity2.x -= -4.001;
 	}
-	if (position1.x < position2.x+ radios2/2 && position1.x + width > position2.x - radios2/2 && position2.y > position1.y + height ) {
+	if (position1.x < position2.x + radios2 && position1.x + width > position2.x - radios2 && position2.y > position1.y + height ) {
 			newVelocity2.y -= -4.001;
 	}
-	if (position1.x < position2.x+ radios2/2 && position1.x + width > position2.x - radios2/2 && position2.y  < position1.y ) {
+	if (position1.x < position2.x + radios2 && position1.x + width > position2.x - radios2 && position2.y  < position1.y ) {
 			newVelocity2.y -= 4.001;
 	}
 
