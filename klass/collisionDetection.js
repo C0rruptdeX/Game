@@ -29,19 +29,19 @@ function collRE(width, height, position1, radios2, position2) {
 	}
 }
 
-function resetP_R(width, height, position1, radios2, position2) {
+function resetP_R(width, height, position1, radios, position2) {
 	var newVelocity2 = createVector(0, 0);
 
-	if (position1.y < position2.y + radios2 && position1.y + height > position2.y - radios2 && position2.x + radios2/2 -5  < position1.x) {
+	if (position1.y - radios + 4< position2.y  && position1.y + height + radios - 4 > position2.y   &&  position2.x    < position1.x ) {
 			newVelocity2.x -= 4.001;
-	}
-	if (position1.y < position2.y + radios2 && position1.y + height > position2.y - radios2  && position2.x > position1.x + width ) {
+	}else
+	if (position1.y - radios + 4< position2.y  && position1.y + height + radios -4> position2.y  && position2.x  > position1.x + width  ) {
 			newVelocity2.x -= -4.001;
-	}
-	if (position1.x < position2.x + radios2 && position1.x + width - 5> position2.x - radios2 && position2.y > position1.y + height ) {
+	}else
+	if (position1.x - radios + 4 < position2.x && position1.x + width + radios -4>  position2.x   && position2.y> position1.y + height  ) {
 			newVelocity2.y -= -4.001;
-	}
-	if (position1.x < position2.x + radios2 && position1.x + width > position2.x - radios2 && position2.y + radios2/2 - 5 < position1.y ) {
+	}else
+	if (position1.x - radios +4< position2.x  && position1.x + width + radios -4> position2.x    && position2.y   <  position1.y  ) {
 			newVelocity2.y -= 4.001;
 	}
 
@@ -109,3 +109,24 @@ function resetG(direction) {
 		game.level.boxes[game.ghost.yourBoxIndex].position.add(newVelocity2)
 	}
 }
+
+
+
+
+// fun slide thing ??????????
+
+/*
+
+if (position1.y < position2.y  && position1.y + height < position2.y   && position2.x    < position1.x) {
+		newVelocity2.x -= 4.001;
+}
+if (position1.y < position2.y  && position1.y + height < position2.y   && position2.x  < position1.x + width  ) {
+		newVelocity2.x -= -4.001;
+}
+if (position1.x < position2.x  && position1.x + width < position2.x  && position2.y < position1.y + height  ) {
+		newVelocity2.y -= -4.001;
+}
+if (position1.x < position2.x  && position1.x + width < position2.x  && position2.y   < position1.y  ) {
+		newVelocity2.y -= 4.001;
+}
+*/

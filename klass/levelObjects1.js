@@ -34,8 +34,9 @@ function Wall(x,y, w,h) {
 	this.collide = function() {
 
 		if(collRE(this.width, this.height, this.position, game.player.size, game.player.position)){
-			resetP_R(this.width, this.height, this.position, game.player.size, game.player.position);
-		}
+	  	resetP_R(this.width, this.height, this.position, game.player.size, game.player.position);
+	  }
+
 		if(!game.ghost.visible){
 		}else if(collRE(this.width, this.height, this.position, game.ghost.size, game.ghost.position)){
 			resetG();

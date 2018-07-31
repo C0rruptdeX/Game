@@ -3,6 +3,7 @@ function Player(x,y) {
 	this.position = createVector(x, y);
 	this.velocity = createVector(0, 0);
 	this.size = 40;
+	this.speed = 4;
 
 	this.key_end = 0;
 	this.key_steel = 0;
@@ -21,16 +22,16 @@ function Player(x,y) {
 		var newVelocity = createVector(0, 0);
 
 		if (keyIsDown(87)) {
-        newVelocity.y -= 4;
+        newVelocity.y -= this.speed;
     }
     if (keyIsDown(83)) {
-        newVelocity.y += 4;
+        newVelocity.y += this.speed;
     }
     if (keyIsDown(65)) {
-        newVelocity.x -= 4;
+        newVelocity.x -= this.speed;
     }
     if (keyIsDown(68)) {
-        newVelocity.x += 4;
+        newVelocity.x += this.speed;
     }
 
 		this.velocity.lerp(newVelocity, 1);

@@ -30,6 +30,8 @@ function keyPressed(){
 				var distance = sqrt(pow(abs(game.level.boxes[i].width/2+game.level.boxes[i].position.x-game.player.position.x),2)+pow(game.level.boxes[i].width/2+(game.level.boxes[i].position.y-game.player.position.y),2));
 				if(distance < 50 && game.ghost.yourBoxIndex != i) {
 					game.player.hasBox = true;
+					game.player.hasUm = false;
+					game.player.hasBlock = false;
 					game.player.yourBoxIndex = i;
 				}
 				i++;
@@ -40,6 +42,7 @@ function keyPressed(){
 				var distance = sqrt(pow(abs(20/2+game.level.umleiter[i].position.x-game.player.position.x),2)+pow(20/2+(game.level.umleiter[i].position.y-game.player.position.y),2));
 				if(distance < 45) {
 					game.player.hasUm = true;
+					game.player.hasBlock = false;
 					game.player.yourUmIndex = i;
 				}
 				i++;
