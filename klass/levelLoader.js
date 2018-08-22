@@ -15,6 +15,8 @@ function LevelLoader(x,y) {
 	this.keys_end_info = [];
 	this.door_end_info = [];
 
+	this.enemys_info = [];
+
 	this.floor_info = [];
 
 	this.doors_steel_info = [];
@@ -37,6 +39,8 @@ function LevelLoader(x,y) {
 	this.floors = [];
 
 	this.level = [];
+
+	this.enemys = [];
 
 	this.speers = [];
 	this.umleiter = [];
@@ -116,6 +120,10 @@ function LevelLoader(x,y) {
 
 		for(i = 0; i < this.activator.length; i++) {
 			this.activator[i].update();
+		}
+
+		for(i=0; i<this.enemys.length; i++){
+			this.enemys[i].update();
 		}
 
 	}
